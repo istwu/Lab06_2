@@ -1,15 +1,16 @@
 package com.wuisabella.lab06;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
-import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
-    Button submitButton;
+    Button startButton;
     EditText editText;
     TextView textView;
 
@@ -18,24 +19,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        submitButton = findViewById(R.id.clickButton);
-        editText = findViewById(R.id.responseEditText);
-        textView = findViewById(R.id.textBox);
+        startButton = findViewById(R.id.startbutton);
 
-        submitButton.setOnClickListener(new View.OnClickListener(){
+        startButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                System.out.println("hi");
-                Log.i("testButton", "hello " + editText.getText().toString());
-                textView.setText(textView.getText() + " " + editText.getText());
+                start();
             }
         });
+    }
 
-        editText.setOnFocusChangeListener(new View.OnFocusChangeListener(){
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-            }
-        });
+    private void start(){
+        Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+        startActivity(intent);
     }
 }
