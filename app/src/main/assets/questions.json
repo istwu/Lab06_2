@@ -1,0 +1,23 @@
+[
+  {
+    "question": "Which of the following is A?",
+    "option1": "A",
+    "option2": "B",
+    "option3": "C",
+    "answer": 1
+  },
+  {
+    "question": "Which of the following is not B or C?",
+    "option1": "A",
+    "option2": "B",
+    "option3": "C",
+    "answer": 1
+  },
+  {
+    "question": "Which of the following is the first option?",
+    "option1": "A",
+    "option2": "B",
+    "option3": "C",
+    "answer": 1
+  }
+]
