@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -68,6 +70,21 @@ public class QuizActivity extends AppCompatActivity {
 
         next_question();
 
+        confirm.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(!answered) {
+                    if(rb1.isChecked() || rb2.isChecked() || rb3.isChecked()) {
+                        check_answer();
+                    } else {
+                        Toast.makeText(QuizActivity.this, "Please select an answer.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    next_question();
+                }
+            }
+        });
+
     }
 
     public String read_json() {
@@ -111,7 +128,19 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    private void finish_quiz(){
+    private void check_answer() {
+        answered = true;
+
+        RadioButton selected = findViewById(radioGroup.getCheckedRadioButtonId());
+        int num = radioGroup.indexOfChild(selected) + 1;
+
+        if (num == currentQuestion.getAnswer()) {
+            score++;
+
+        }
+    }
+
+    private void finish_quiz() {
         finish();
     }
 
